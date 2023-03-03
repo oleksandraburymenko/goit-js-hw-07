@@ -13,7 +13,7 @@ function onImgClick (e) {
     `<div class="modal">
     </div>`);
 
-modal.show()
+    modal.show()
 }
 
 const createGalleryGrid = ({ preview, original, description }) => 
