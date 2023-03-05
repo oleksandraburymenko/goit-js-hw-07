@@ -4,15 +4,13 @@ import { galleryItems } from './gallery-items.js';
 const galleryEl = document.querySelector('.gallery');
 
 const markup = galleryItems.map(({ preview, original, description}) =>
-`<a class="gallery__item" href="${original}" data-description="${description}">
+`<a class="gallery__item" href="${original}">
   <img class="gallery__image" src="${preview}" alt="${description}" />
 </a>`).join("");
 galleryEl.insertAdjacentHTML("beforeend", markup);
 
 const lightbox = new SimpleLightbox(".gallery a", {
-  captionsData: "data-description",
+  captionsData: "alt",
   captionDelay: 250,
-  captionPosition: "bottom",
-  overlayOpacity: 0.8,
-  showNav: true, 
+  
 });
