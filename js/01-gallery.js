@@ -19,21 +19,24 @@ const createGalleryGrid = ({ preview, original, description }) =>
 const markupGallery = galleryItems.map(e => createGalleryGrid(e)).join('');
 gallery.insertAdjacentHTML('afterbegin', markupGallery);
 
-
+let instance;
 function onImgClick (e) {
   e.preventDefault()
   if (e.target.nodeName !== 'IMG') {
       return;
   }
-  const modal = basicLightbox.create(
+  instance = basicLightbox.create(
   `<img src="${e.target.dataset.source}" alt="${e.target.alt}" />
-  `);
+  `, {
+    onShow: (instance) => { document.addEventListener(`keydown`, escModal) },
+    onClose: (instance) => { document.removeEventListener(`keydown`, escModal) }
+  });
 
-  modal.show()
+  instance.show()
 }
 
-
-window.addEventListener('keydown', e =>
-{if (e.key === 'Escape') {
-  modal.close();
-}});
+function escModal ({code}) {
+  if (code === `Escape`) {
+    instance.close()
+  }
+}
