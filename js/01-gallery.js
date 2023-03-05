@@ -4,24 +4,9 @@ import { galleryItems } from './gallery-items.js';
 const gallery = document.querySelector('.gallery');
 gallery.addEventListener('click', onImgClick);
 
-function onImgClick (e) {
-    e.preventDefault()
-    if (e.target.nodeName !== 'IMG') {
-        return;
-    }
-    const modal = basicLightbox.create(
-    `<div class="modal">
-      <img src="${event.target.dataset.source}" alt="event.target.alt" />
-    </div>`);
-
-    modal.show()
-}
-
-
-
 const createGalleryGrid = ({ preview, original, description }) => 
 `<div class="gallery__item">
-<a class="gallery__link" href="large-image.jpg">
+<a class="gallery__link" href="${original}">
   <img
     class="gallery__image"
     src="${preview}"
@@ -33,4 +18,18 @@ const createGalleryGrid = ({ preview, original, description }) =>
 
 const markupGallery = galleryItems.map(e => createGalleryGrid(e)).join('');
 gallery.insertAdjacentHTML('afterbegin', markupGallery);
+
+
+function onImgClick (e) {
+  e.preventDefault()
+  if (e.target.nodeName !== 'IMG') {
+      return;
+  }
+  const modal = basicLightbox.create(
+  `<img src="${e.target.dataset.source}" alt="${e.target.alt}" />
+  `);
+
+  modal.show()
+}
+
 
