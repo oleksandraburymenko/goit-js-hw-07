@@ -11,11 +11,13 @@ function onImgClick (e) {
     }
     const modal = basicLightbox.create(
     `<div class="modal">
-      <img src="" alt="" />
+      <img src="event.target.dataset.source" alt="event.target.alt" />
     </div>`);
 
     modal.show()
 }
+
+
 
 const createGalleryGrid = ({ preview, original, description }) => 
 `<div class="gallery__item">
