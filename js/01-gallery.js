@@ -11,6 +11,7 @@ function onImgClick (e) {
     }
     const modal = basicLightbox.create(
     `<div class="modal">
+      <img src="" alt="" />
     </div>`);
 
     modal.show()
@@ -30,3 +31,4 @@ const createGalleryGrid = ({ preview, original, description }) =>
 
 const markupGallery = galleryItems.map(e => createGalleryGrid(e)).join('');
 gallery.insertAdjacentHTML('afterbegin', markupGallery);
+
