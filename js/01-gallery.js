@@ -11,7 +11,7 @@ function onImgClick (e) {
     }
     const modal = basicLightbox.create(
     `<div class="modal">
-      <img src="event.target.dataset.source" alt="event.target.alt" />
+      <img src="${event.target.dataset.source}" alt="event.target.alt" />
     </div>`);
 
     modal.show()
