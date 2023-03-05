@@ -33,3 +33,7 @@ function onImgClick (e) {
 }
 
 
+window.addEventListener('keydown', e =>
+{if (e.key === 'Escape') {
+  modal.close();
+}});
